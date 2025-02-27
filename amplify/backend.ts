@@ -7,7 +7,7 @@ export const backend = defineBackend({
 
 backend.addOutput({
   storage: {
-    aws_region: "ap-southeast-1",
+    // aws_region: "ap-southeast-1",
     bucket_name: "react-upload-file-with-url",
   }
 });
