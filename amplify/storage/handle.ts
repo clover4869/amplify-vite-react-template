@@ -1,6 +1,4 @@
 import type { Handler } from "aws-lambda";
-import axios, { AxiosError } from 'axios';
-import { env } from '$amplify/env/trigger-s3';
 
 export const handler: Handler = async (event, context) => {
     console.log("Event:", JSON.stringify(event, null, 2));
@@ -26,10 +24,6 @@ export const handler: Handler = async (event, context) => {
         // const response = await axios.post(createThumbnailUrl, requestData, { headers });
         // console.log("API Response:", response.data);
     } catch (error) {
-        const msg =
-            (error as AxiosError<{ detail: string }>)?.response?.data?.detail ||
-            (error as Error).message;
-        console.error(`Error processing S3 event: ${msg}`);
         return {
             statusCode: 500,
             body: 'Error calling API'
