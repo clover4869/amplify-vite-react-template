@@ -15,7 +15,7 @@ export const backend = defineBackend({
 const { s3TriggerFunction: fn } = backend;
 const stack = Stack.of(fn);
 
-const existingBucket: IBucket = Bucket.fromBucketName(
+const existingBucket = Bucket.fromBucketName(
   stack,
   'ExistingBucket',
   'react-upload-file-with-url' // Replace with your bucket name
