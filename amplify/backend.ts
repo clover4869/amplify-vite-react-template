@@ -12,20 +12,15 @@ export const backend = defineBackend({
   s3TriggerFunction,
 });
 
-const { s3TriggerFunction: fn } = backend;
-const stack = Stack.of(fn);
-
-const existingBucket = Bucket.fromBucketName(
-  stack,
-  'ExistingBucket',
-  'react-upload-file-with-url' // Replace with your bucket name
-);
-
-fn.addEventSourceMapping('S3Trigger', {
-  eventSourceArn: existingBucket.bucketArn,
-  eventSourceParams: {
-    s3: {
-      event: 's3:ObjectCreated:*',
-    },
-  },
+backend.addOutput({
+  storage: {
+    aws_region: "ap-southeast-1",
+    bucket_name: "react-upload-file-with-url",
+    triggers: {
+      create: {
+        function: s3TriggerFunction, // This is the Lambda function that gets triggered
+        event: 's3:ObjectCreated:*' // Trigger on object creation in the S3 bucket
+      }
+    }
+  }
 });
