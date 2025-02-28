@@ -1,18 +1,18 @@
 import { defineBackend } from '@aws-amplify/backend';
-import { LambdaS3LogStack } from './cdk-custom/trigger-s3/trigger-s3';
+import { SqsConsumerStack } from './cdk-custom/consumer-sqs/resource';
+import { S3TriggerStack } from './cdk-custom/trigger-s3/resource';
 
 export const backend = defineBackend({
 });
 
-backend.addOutput({
-  storage: {
-    aws_region: "ap-southeast-1",
-    bucket_name: "react-upload-file-with-url",
-  }
-});
 
-new LambdaS3LogStack(
-  backend.createStack('LambdaS3LogStack'),
-  'lambdaS3LogStack',
-  {}
+new SqsConsumerStack(
+    backend.createStack('SqsConsumerStack'),
+    'sqsConsumerStack',
+    {}
+);
+new S3TriggerStack(
+    backend.createStack('S3TriggerStack'),
+    's3TriggerStack',
+    {}
 );
