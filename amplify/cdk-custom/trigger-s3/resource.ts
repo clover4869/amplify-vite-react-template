@@ -36,6 +36,10 @@ export class S3TriggerStack extends cdk.Stack {
       functionName: 'S3ProcessorLambda',
       description: 'This is my custom Lambda function created using CDK',
       memorySize: 128,
+      environment: {
+        TEST: 'test',
+        AWS_REGION:'ap-southeast-1'
+      }
     });
 
 
