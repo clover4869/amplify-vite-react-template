@@ -14,7 +14,7 @@ export const backend = defineBackend({
 // );
 new S3TriggerUploadStack(
     backend.createStack('S3TriggerUploadStack'),
-    's3TriggerStack',
+    's3TriggerUploadStack',
     {}
 );
 
