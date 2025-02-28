@@ -1,6 +1,6 @@
 // consumer-sqs/handler.ts
 
-export const handle = async (event: any) => {
+export const handler = async (event: any) => {
     console.log('Received SQS event:', JSON.stringify(event, null, 2));
 
     for (const record of event.Records) {

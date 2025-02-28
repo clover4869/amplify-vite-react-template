@@ -1,4 +1,4 @@
-export const handle = async (event: any) => {
+export const handler = async (event: any) => {
     console.log('helloworld', JSON.stringify(event, null, 2));
 
     return {

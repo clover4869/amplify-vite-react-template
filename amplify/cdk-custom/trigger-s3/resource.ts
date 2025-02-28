@@ -18,7 +18,7 @@ export class S3TriggerStack extends cdk.Stack {
 
     const s3ProcessorLambda = new lambda.Function(this, 'S3ProcessorLambda', {
       runtime: lambda.Runtime.NODEJS_18_X, // Specify the runtime
-      handler: 'handle.handle',           // Specify the handler function
+      handler: 'handler.handler',           // Specify the handler function
       code: lambda.Code.fromAsset('./amplify/cdk-custom/trigger-s3'),
       functionName: 'S3ProcessorLambda',
       description: 'This is my custom Lambda function created using CDK',

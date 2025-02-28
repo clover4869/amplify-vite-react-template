@@ -10,7 +10,7 @@ export class HelloWorldLambdaStack extends Stack {
     // Define the Lambda function
     const helloWorldFunction = new lambda.Function(this, 'HelloWorldFunction', {
       runtime: lambda.Runtime.NODEJS_18_X, // Specify the runtime
-      handler: 'handle.handle',           // Specify the handler function
+      handler: 'handler.handler',           // Specify the handler function
       code: lambda.Code.fromAsset('./amplify/cdk-custom/helloworld'),
       functionName: 'HelloWorldFunction',
       description: 'This is my custom Lambda function created using CDK',
