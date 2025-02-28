@@ -1,8 +1,7 @@
 import { defineBackend } from '@aws-amplify/backend';
-import {storage} from './storage/resource'
+import { LambdaS3LogStack } from './cdk-custom/trigger-s3/trigger-s3';
 
 export const backend = defineBackend({
-  // storage,
 });
 
 backend.addOutput({
@@ -11,3 +10,9 @@ backend.addOutput({
     bucket_name: "react-upload-file-with-url",
   }
 });
+
+new LambdaS3LogStack(
+  backend.createStack('LambdaS3LogStack'),
+  'lambdaS3LogStack',
+  {}
+);
