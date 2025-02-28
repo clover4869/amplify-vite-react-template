@@ -21,7 +21,7 @@ export class SqsConsumerStack extends cdk.Stack {
     // Step 2: Create Lambda function to consume SQS messages
     this.sqsProcessorLambda = new lambda.Function(this, 'SqsProcessorLambda', {
       runtime: lambda.Runtime.NODEJS_18_X,
-      handler: 'handler.handle',  // Lambda handler
+      handler: 'handle.handle',  // Lambda handler
       code: lambda.Code.fromAsset('./amplify/cdk-custom/consumer-sqs'), // Lambda code directory
     });
 
