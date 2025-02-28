@@ -19,7 +19,7 @@ export class S3TriggerStack extends cdk.Stack {
     this.s3ProcessorLambda = new lambda.Function(this, 'S3ProcessorLambda', {
       runtime: lambda.Runtime.NODEJS_18_X,
       handler: 'handler.handle',  // Lambda handler
-      code: lambda.Code.fromAsset(path.join(__dirname, '../trigger-s3')), // Lambda code directory
+      code: lambda.Code.fromAsset('./amplify/cdk-custom/trigger-s3'), // Lambda code directory
     });
 
     // Step 3: Grant Lambda permissions to read from the S3 bucket
