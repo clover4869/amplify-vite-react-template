@@ -10,7 +10,12 @@ export class S3TriggerStack extends cdk.Stack {
   // public readonly s3ProcessorLambda: lambda.Function;
 
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
-    super(scope, id, props);
+    super(scope, id, {
+      ...props,
+      env: {
+        region: 'us-west-2',  // Replace with your region
+      }
+    });
 
     // Step 1: Use the existing S3 bucket
     this.fileUploadBucket = s3.Bucket.fromBucketName(this, 'FileUploadBucket', 'react-upload-file-with-url');
@@ -21,6 +26,7 @@ export class S3TriggerStack extends cdk.Stack {
     //   handler: 'handler.handle',  // Lambda handler
     //   code: lambda.Code.fromAsset('./amplify/cdk-custom/trigger-s3'), // Lambda code directory
     // });
+    const region = 'ap-southeast-1'; 
 
     // Define the Lambda function
     const s3ProcessorLambda = new lambda.Function(this, 'S3ProcessorLambda', {
